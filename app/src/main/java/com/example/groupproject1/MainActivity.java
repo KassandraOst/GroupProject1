@@ -29,7 +29,7 @@ public class MainActivity extends AppCompatActivity {
         newsButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
  //TODO: REPLACE (CLASS) WITH THE APPROPRIATE CLASS AND REMOVE COMMENT MARKS
-                /*Intent goToGuardianActivity = new Intent(this, (CLASS).class);
+                /*Intent goToGuardianActivity = new Intent(v.getContext(), (CLASS).class);
                 startActivity(goToGuardianActivity);*/
             }
         });//End newsButton onClickListener
@@ -38,7 +38,7 @@ public class MainActivity extends AppCompatActivity {
         imgDayButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 //TODO: REPLACE (CLASS) WITH THE APPROPRIATE CLASS AND REMOVE COMMENT MARKS
-                /*Intent goToImgDay = new Intent(this, (CLASS).class);
+                /*Intent goToImgDay = new Intent(v.getContext(), (CLASS).class);
                 startActivity(goToImgDay);*/
             }
         });//End imgDayButton onClickListener
@@ -47,7 +47,7 @@ public class MainActivity extends AppCompatActivity {
         earthButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 //TODO: REPLACE (CLASS) WITH THE APPROPRIATE CLASS AND REMOVE COMMENT MARKS
-                /*Intent goToEarthImg = new Intent(this, (CLASS).class);
+                /*Intent goToEarthImg = new Intent(v.getContext(), (CLASS).class);
                 startActivity(goToEarthImg);*/
             }
         });//End earthButton onClickListener
@@ -56,7 +56,7 @@ public class MainActivity extends AppCompatActivity {
         BBCButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 //TODO: REPLACE (CLASS) WITH THE APPROPRIATE CLASS AND REMOVE COMMENT MARKS
-                /*Intent goToBBCNews = new Intent(this, (CLASS).class);
+                /*Intent goToBBCNews = new Intent(v.getContext(), (CLASS).class);
                 startActivity(goToBBCNews);*/
             }
         });//End BBCButton onClickListener
