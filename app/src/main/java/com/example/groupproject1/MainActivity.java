@@ -37,9 +37,9 @@ public class MainActivity extends AppCompatActivity {
         //When you click mButton2 it will send you to the second activity, NASA Image of the Day
         imgDayButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                //TODO: REPLACE (CLASS) WITH THE APPROPRIATE CLASS AND REMOVE COMMENT MARKS
-                /*Intent goToImgDay = new Intent(this, (CLASS).class);
-                startActivity(goToImgDay);*/
+
+                Intent goToImgDay = new Intent(v.getContext(), NASAImgDay.class);
+                startActivity(goToImgDay);
             }
         });//End imgDayButton onClickListener
 

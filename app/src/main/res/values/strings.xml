@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">CST2335 Group Project</string>
 
-//Strings for the wrapper application
+    //Strings for the wrapper application
     <string name="mButton1">The Guardian Newspaper</string>
     <string name="mButton2">NASA Image of the Day</string>
     <string name="mButton3">NASA Earth Imagery</string>
