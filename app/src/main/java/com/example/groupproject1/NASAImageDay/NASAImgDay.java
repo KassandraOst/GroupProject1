@@ -1,4 +1,4 @@
-package com.example.groupproject1.NASAImgDay;
+package com.example.groupproject1.NASAImageDay;
 
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AlertDialog;

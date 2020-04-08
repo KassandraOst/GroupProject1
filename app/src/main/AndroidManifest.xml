@@ -10,8 +10,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".NASAImgDay.NASAImgDay"></activity>
-        <activity android:name=".NASAImgDay.EmptyActivity"></activity>
+        <activity android:name=".NASAImageDay.NASAImgDay"></activity>
+        <activity android:name=".NASAImageDay.EmptyActivity"></activity>
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

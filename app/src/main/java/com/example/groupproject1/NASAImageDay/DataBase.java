@@ -1,4 +1,4 @@
-package com.example.groupproject1.NASAImgDay;
+package com.example.groupproject1.NASAImageDay;
 
 import android.content.ContentValues;
 import android.content.Context;
@@ -7,7 +7,6 @@ import android.database.DatabaseUtils;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-import android.graphics.Bitmap;
 import android.util.Log;
 
 
