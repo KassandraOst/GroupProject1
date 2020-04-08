@@ -2,9 +2,9 @@
     <string name="app_name">CST2335 Group Project</string>
 
 //Strings for the wrapper application
-    <string name="mButton1">The Guardian Newspaper</string>
-    <string name="mButton2">NASA Image of the Day</string>
-    <string name="mButton3">NASA Earth Imagery</string>
-    <string name="mButton4">BBC News Reader</string>
+    <string name="mButton1">The Guardian\nNewspaper</string>
+    <string name="mButton2">NASA Image\nof the Day</string>
+    <string name="mButton3">NASA Earth\nImagery</string>
+    <string name="mButton4">BBC News\nReader</string>
 
 </resources>

@@ -4,15 +4,15 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
-import android.widget.Button;
+import android.widget.ImageButton;
+
 
 public class MainActivity extends AppCompatActivity {
-    Button newsButton;
-    Button imgDayButton;
-    Button earthButton;
-    Button BBCButton;
+    ImageButton newsButton;
+    ImageButton imgDayButton;
+    ImageButton earthButton;
+    ImageButton BBCButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,15 +20,15 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         //Initiates all the buttons to the appropriate views
-        newsButton = findViewById(R.id.mButton1);
-        imgDayButton = findViewById(R.id.mButton2);
-        earthButton = findViewById(R.id.mButton3);
-        BBCButton = findViewById(R.id.mButton4);
+        newsButton = findViewById(R.id.mGuardBtn);
+        imgDayButton = findViewById(R.id.mImgDayBtn);
+        earthButton = findViewById(R.id.mEarthImgBtn);
+        BBCButton = findViewById(R.id.mBBCNewsBtn);
 
         // When you click mButton1 it will send you to the first activity,Guardian news article search.
         newsButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
- //TODO: REPLACE (CLASS) WITH THE APPROPRIATE CLASS AND REMOVE COMMENT MARKS
+        //TODO: REPLACE (CLASS) WITH THE APPROPRIATE CLASS AND REMOVE COMMENT MARKS
                 /*Intent goToGuardianActivity = new Intent(v.getContext(), (CLASS).class);
                 startActivity(goToGuardianActivity);*/
             }
