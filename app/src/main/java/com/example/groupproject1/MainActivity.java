@@ -18,7 +18,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
+//note
         //Initiates all the buttons to the appropriate views
         newsButton = findViewById(R.id.mGuardBtn);
         imgDayButton = findViewById(R.id.mImgDayBtn);
