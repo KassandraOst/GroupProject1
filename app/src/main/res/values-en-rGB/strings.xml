@@ -14,5 +14,11 @@
     <string name="refresh">Refresh</string>
     <string name="search">Search</string>
 
+    //Search Fragment
+    <string name="searchButton">Search</string>
+    <string name="month">month</string>
+    <string name="day">day</string>
+    <string name="year">year</string>
+    <string name="backButton">Back</string>
 
 </resources>

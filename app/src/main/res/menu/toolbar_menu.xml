@@ -7,15 +7,10 @@
         android:icon="@drawable/search"
         android:orderInCategory="1"
         app:showAsAction="always" />
-    <item android:id="@+id/share"
-        android:title="@string/share"
-        android:icon="@drawable/share"
-        android:orderInCategory="2"
-        app:showAsAction="always" />
     <item android:id="@+id/refresh"
         android:title="@string/refresh"
         android:icon="@drawable/refresh"
-        android:orderInCategory="3"
+        android:orderInCategory="2"
         app:showAsAction="always" />
 
 </menu>

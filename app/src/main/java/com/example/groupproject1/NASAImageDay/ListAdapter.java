@@ -1,8 +1,6 @@
 package com.example.groupproject1.NASAImageDay;
 
 import android.content.Context;
-import android.graphics.Bitmap;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,6 +9,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.groupproject1.R;
+
 
 class ListAdapter extends BaseAdapter {
 
@@ -25,8 +24,6 @@ class ListAdapter extends BaseAdapter {
     private DataBase dbAdapter;
     private LayoutInflater inflater;
     private Context context;
-    private Bitmap img;
-    String title, date, query;
     ObjectHolder o;
 
     public ListAdapter(Context context, DataBase dbAdapter, ObjectHolder o) {
@@ -35,12 +32,6 @@ class ListAdapter extends BaseAdapter {
         this.dbAdapter = dbAdapter;
         this.o = o;
 
-    }
-
-    public ListAdapter(Context context) {
-        this.context = context;
-        this.inflater = (LayoutInflater)context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        this.dbAdapter = new DataBase(context);
     }
 
         @Override
@@ -62,6 +53,10 @@ class ListAdapter extends BaseAdapter {
         return dbAdapter.getId(pos);
         }
 
+        public String getDetail(int id) {
+
+            return dbAdapter.getDetail(getItemId(id));
+        }
     public String getDate(int id){
 
         return dbAdapter.getDate(getItemId(id));
@@ -77,8 +72,9 @@ class ListAdapter extends BaseAdapter {
         }
 
 
-        public void add (String date, String query, String title) {
-        dbAdapter.insertMessage(date, query, title);
+
+        public void add (String date, String query, String title, String explain) {
+        dbAdapter.insertMessage(date, query, title, explain);
         }
 
         public void deleteAll() {
@@ -89,30 +85,22 @@ class ListAdapter extends BaseAdapter {
 
         }
         }
-        public Bitmap getImg(String imageLink, int id) {
-
-        Log.i("getImg: ", "Start");
-        new nasaQuery(context, o, true, getItem((int)getItemId(id)), getDate((int)getItemId(id))).execute(getQuery((int)getItemId(id)));
-            Log.i("getImg: ", "Finished");
-        return o.getImg();
-        }
 
         @Override
         public View getView ( int id, View convertView, ViewGroup parent){
 
-        Log.i("Database Size: ", getCount()+"");
-
             if (getCount() > 0) {
-                Log.i("Count: ", getCount()+"");
+
                 if (convertView == null) {
                     convertView = inflater.inflate(R.layout.imgday, null);
                     TextView imgText = convertView.findViewById(R.id.imgTV);
                     ImageView imgView = convertView.findViewById(R.id.imgIV);
-                        imgText.setText(getDate(id)+": "+getItem(id));
-                    imgView.setImageBitmap(getImg(getQuery(id), id));
+                    imgText.setText(getDate(id) + ": " + getItem(id));
+                    new nasaQuery(context, o, imgView, null, null, 1, getItem(id), getDate(id), getDetail(id)).execute(getQuery(id));
 
                 }
-            }
+
+        }
             return convertView;
         }//end getView
 

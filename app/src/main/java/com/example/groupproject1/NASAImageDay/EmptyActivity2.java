@@ -5,12 +5,13 @@ import android.os.Bundle;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import com.example.groupproject1.R;
 
-public class EmptyActivity extends AppCompatActivity {
+public class EmptyActivity2 extends AppCompatActivity {
     private FragmentTransaction fragTrans;
     private FragmentManager fragManager;
 
@@ -19,14 +20,11 @@ public class EmptyActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_empty);
 
-        fragManager = getSupportFragmentManager();
-        fragManager.popBackStackImmediate();
-        ImageFragment aFragment = new ImageFragment();
-        fragTrans = fragManager.beginTransaction();
-        fragTrans.replace(R.id.imgFrame, aFragment);
-        fragTrans.addToBackStack(null);
-        fragTrans.commit();
+        DialogFragment newFragment = new SearchFragment();
+        newFragment.show(getSupportFragmentManager(), "timePicker");
+
     }
+
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);

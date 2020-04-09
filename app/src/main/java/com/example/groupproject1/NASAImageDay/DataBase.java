@@ -16,6 +16,7 @@ public class DataBase extends SQLiteOpenHelper {
     static final String KEY_DATE = "date";
     static final String KEY_TITLE = "title";
     static final String KEY_QUERY = "image";
+    static final String KEY_DETAIL = "detail";
 
     static final String TAG = "DBAdapter";
     static final String DATABASE_NAME = "DatabaseNASA";
@@ -23,7 +24,7 @@ public class DataBase extends SQLiteOpenHelper {
     static final int DATABASE_VERSION = 1;
     static final String DATABASE_CREATE =
             "create table " + DATABASE_TABLE + " (" + KEY_ID + " integer primary key autoincrement, "
-                    + KEY_DATE + " TEXT not null, "+ KEY_TITLE + " TEXT not null, " + KEY_QUERY + " TEXT not null);";
+                    + KEY_DATE + " TEXT not null, "+ KEY_TITLE + " TEXT not null, " + KEY_DETAIL + " TEXT not null, " + KEY_QUERY + " TEXT not null);";
 
     SQLiteDatabase db = this.getReadableDatabase();
 
@@ -50,10 +51,11 @@ public class DataBase extends SQLiteOpenHelper {
         onCreate(db);
     }
 
-    public boolean insertMessage(String date, String query, String title) {
+    public boolean insertMessage(String date, String query, String title, String detail) {
         ContentValues initialValues = new ContentValues();
         initialValues.put(KEY_DATE, date);
         initialValues.put(KEY_TITLE, title);
+        initialValues.put(KEY_DETAIL, detail);
             initialValues.put(KEY_QUERY, query);
         long result = db.insert(DATABASE_TABLE, null, initialValues);
 
@@ -88,10 +90,15 @@ public class DataBase extends SQLiteOpenHelper {
 
     }
 
-    public void dropTable() {
-
-        String query = "DROP TABLE " + DATABASE_TABLE;
-        db.execSQL(query);
+    public String getDetail(long id) {
+        String detail = null;
+        String q = "SELECT * FROM " + DATABASE_TABLE +" WHERE " + KEY_ID +"="+ id;
+        Cursor cursor = db.rawQuery(q, null);
+        if( cursor != null && cursor.moveToFirst() ){
+            detail = cursor.getString(cursor.getColumnIndex(KEY_DETAIL));
+        }
+        printCursor(cursor);
+        return detail;
     }
 
     public String getQuery(long id) {

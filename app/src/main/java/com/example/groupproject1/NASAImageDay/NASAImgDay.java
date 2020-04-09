@@ -1,11 +1,14 @@
 package com.example.groupproject1.NASAImageDay;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.drawerlayout.widget.DrawerLayout;
 
+import android.app.DatePickerDialog;
+import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
@@ -15,13 +18,18 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.DatePicker;
 import android.widget.ListView;
 import android.widget.Toast;
+
+import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import com.example.groupproject1.R;
 import com.google.android.material.navigation.NavigationView;
+
+import java.util.Calendar;
 
 public class NASAImgDay extends AppCompatActivity {
 
@@ -33,6 +41,7 @@ public class NASAImgDay extends AppCompatActivity {
     private FragmentManager fragManager;
     private FragmentTransaction fragTrans;
     ImageFragment aFragment;
+    String date;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -72,7 +81,7 @@ public class NASAImgDay extends AppCompatActivity {
             ListView listv = findViewById(R.id.imgList);
             new AlertDialog.Builder(NASAImgDay.this)
                     .setTitle("Delete entry")
-                    .setMessage("Are you sure you want to delete this?\nThe message: " + la.getItem(pos) + "\n Position: " + pos)
+                    .setMessage("Are you sure you want to delete this?\n" + la.getItem(pos)+"\nWarning! This can't be undone!")
 
                     .setPositiveButton(android.R.string.yes, (dialog, which) -> {
 
@@ -93,7 +102,7 @@ public class NASAImgDay extends AppCompatActivity {
             ListAdapter la = new ListAdapter(getApplicationContext(), dbAdapter, o);
             new AlertDialog.Builder(NASAImgDay.this)
                     .setTitle("View Image")
-                    .setMessage("Would you like to see the full image of: " + la.getItem(pos)+ "?")
+                    .setMessage("Would you like to load the full image and description of: " + la.getItem(pos)+ "?")
 
                     .setPositiveButton(android.R.string.yes, (dialog, which) -> {
                         aFragment = new ImageFragment();
@@ -103,33 +112,28 @@ public class NASAImgDay extends AppCompatActivity {
                         b.putLong("ID", dbAdapter.getId(pos));
                         b.putString("query", dbAdapter.getQuery((int) dbAdapter.getId(pos)));
                         aFragment.setArguments(b);
-
-
                             try {
                                 Intent goToBlankActivity = new Intent(this, EmptyActivity.class);
                                 goToBlankActivity.putExtra("bundle",b);
                                 startActivity(goToBlankActivity);
                             } catch (Exception e) {
                                 e.printStackTrace();
-
-
-
                         }
                     })
 
                     .setNegativeButton(android.R.string.no, null)
-                    .setIcon(android.R.drawable.ic_dialog_alert)
                     .show();
     });// end of click
 // end of toolbar
-updateList();
+updateList(null);
     }//end of OnCreate
-    public void updateList() {
+    public void updateList(String date) {
 
-        a = new ImportAPI(01, 01, 2020);
         ListAdapter la = new ListAdapter(getApplicationContext(), dbAdapter, o);
-        new nasaQuery(this, o).execute(a.getApi());
-        la.add(o.getDate(), o.getQuery(), o.getTitle());
+        if(date != null) {
+            a = new ImportAPI(date);
+            new nasaQuery(this, o).execute(a.getApi());
+        }
 
         Cursor cursor = dbAdapter.getAllEntries();
 
@@ -148,6 +152,34 @@ updateList();
         Log.i("updateList: ", "It's over");
     }
 
+    public void dateSearch() {
+        aFragment = new ImageFragment();
+        fragManager.popBackStackImmediate();
+
+        Bundle b = new Bundle();
+        aFragment.setArguments(b);
+        try {
+            Intent goToBlankActivity = new Intent(this, EmptyActivity2.class);
+            goToBlankActivity.putExtra("bundle",b);
+            startActivityForResult(goToBlankActivity, 500);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if(resultCode == 600) {
+            String date = data.getStringExtra("date");
+            Log.i("OnActivityResult: ", date);
+            updateList(date);
+        }
+
+
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -161,14 +193,11 @@ updateList();
     public boolean onOptionsItemSelected(MenuItem item) {
 
         switch(item.getItemId()) {
-            case R.id.share:
-                Toast.makeText(this, "You have pressed Share", Toast.LENGTH_SHORT).show();
-                break;
             case R.id.search:
-                Toast.makeText(this, "You have pressed Search", Toast.LENGTH_SHORT).show();
+                dateSearch();
                 break;
             case R.id.refresh:
-                updateList();
+                updateList(null);
                 break;
 
             default:
@@ -218,6 +247,10 @@ updateList();
 
         }
 
+        public ImportAPI (String date1) {
+            setApi(link+date+date1);
+
+        }
         public void setDate(int month, int day, int year) {
 
             this.year = year;
