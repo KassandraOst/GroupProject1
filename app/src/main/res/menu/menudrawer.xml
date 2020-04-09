@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <group android:checkableBehavior="single">
+        <item android:id="@+id/bbcN"
+            android:title="@string/bbc"
+            app:showAsAction="always" />
+
+
+        <item android:id="@+id/WeatherItem"
+            android:title="@string/NasaEarth"
+            app:showAsAction="always"/>
+
+        <item android:id="@+id/GoBack"
+            android:title="@string/NasaImage"
+            app:showAsAction="always"
+            />
+        <item android:id="@+id/Go"
+            android:title="@string/guardian"
+            app:showAsAction="always"
+            />
+    </group>
+</menu>

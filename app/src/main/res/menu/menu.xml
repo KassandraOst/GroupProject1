@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+
+    <item android:id="@+id/one"
+        android:icon="@drawable/bbcnews"
+        android:orderInCategory="1"
+        app:showAsAction="always"
+        android:title="delete"/>
+    <item android:id="@+id/two"
+        android:icon="@drawable/guardiannews"
+        android:orderInCategory="2"
+        app:showAsAction="always"
+        android:title="edit"/>
+    <item android:id="@+id/three"
+        android:icon="@drawable/earthimg"
+        android:orderInCategory="3"
+        app:showAsAction="always"
+        android:title="share"/>
+
+    <item android:id="@+id/four"
+        android:icon="@drawable/imgday"
+        android:orderInCategory="3"
+        app:showAsAction="always"
+        android:title="share"/>
+
+
+    <item android:id="@+id/five"
+        app:showAsAction="never"
+        android:title="@string/Help"/>
+
+</menu>
+

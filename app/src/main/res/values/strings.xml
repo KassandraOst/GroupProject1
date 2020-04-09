@@ -1,10 +1,50 @@
 <resources>
     <string name="app_name">CST2335 Group Project</string>
 
-//Strings for the wrapper application
+
     <string name="mButton1">The Guardian\nNewspaper</string>
     <string name="mButton2">NASA Image\nof the Day</string>
     <string name="mButton3">NASA Earth\nImagery</string>
     <string name="mButton4">BBC News\nReader</string>
+    <string name="bbc">Bbc News Reader</string>
 
+    <string name="guardian">The Guardian news article search</string>
+
+    <string name="NasaImage">Nasa image of the day search</string>
+
+    <string name="NasaEarth">Nasa earth delivery</string>
+
+    <string name="saveArticle">Save the Article</string>
+
+    <string name="SavedArticles">Saved Articles</string>
+
+    <string name="deleteButton">Delete this Article</string>
+
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="snk">BBC News Articles</string>
+
+    <string name="menuBBC">BBC News Reader</string>
+    <string name="menuG">The Guardian News Article Search</string>
+    <string name="menuN">Nasa Image of the Day Search</string>
+    <string name="menuE">Nasa Earth Delivery</string>
+<string name="Help">Help</string>
+
+    <string name="alertTitle">Help Menu</string>
+    <string name="pb">Return</string>
+
+    <string name="AlertMessage">"BBC News Reader Helper."\n"
+        This Application has 4 main buttons, the BBC news reader goes to a list of news articles where you can read about the
+        latest news and save the news for later viewing, you can delete and also switch between various services through the main page or by
+        using the navigation drawer and the tool bar"</string>
+
+<string name="ArticleSaved">Article Saved</string>
+
+    <string name="sure">Are you Sure ?</string>
+    <string name="del">Do you want to delete this item</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
 </resources>
+

@@ -56,8 +56,8 @@ public class MainActivity extends AppCompatActivity {
         BBCButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 //TODO: REPLACE (CLASS) WITH THE APPROPRIATE CLASS AND REMOVE COMMENT MARKS
-                /*Intent goToBBCNews = new Intent(v.getContext(), (CLASS).class);
-                startActivity(goToBBCNews);*/
+               Intent goToBBCNews = new Intent(v.getContext(), Articles.class);
+                startActivity(goToBBCNews);
             }
         });//End BBCButton onClickListener
 
